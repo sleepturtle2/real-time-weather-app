@@ -6,7 +6,10 @@ const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast'); 
 console.log(__dirname);
 
-
+/*
+Heroku provides the port number at process.env.PORT. (process.env is an environment variable). Locally this is not available and we provide a fallback value of 3000. 
+*/
+const port = process.env.PORT || 3000; 
 
 //Define paths for Express config 
 const publicDirPath = path.join(__dirname, '../public');
@@ -113,8 +116,8 @@ common http port is 80
 callback function is fired when the port is up and running 
 starting a server is an asynchronous process
 */
-app.listen(3000, () => {
-    console.log('Server is running 3000');
+app.listen(port, () => {
+    console.log('Server is running ' + port);
 })
 
 /*
