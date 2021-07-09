@@ -5,6 +5,13 @@ It is created by using Node.js and Express.js.
 
 The temperature is accessed by using the WeatherAPI, which provides us with frequently updated weather. It is available for both free as well as paid subscriptions!
 
+## Live Link
+Click [here](https://sleepturtle-node-weather-app.herokuapp.com/)!
+
+## First Look at the Application
+![alt text](https://github.com/sleepturtle2/real-time-weather-app/blob/master/1.png?raw=true)
+![alt text](https://github.com/sleepturtle2/real-time-weather-app/blob/master/2.png?raw=true)
+
 ## License
 ```
 Copyright (c) 2019 Furkan Aşkın
@@ -27,5 +34,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
-## Live Link
-Click [here](https://sleepturtle-node-weather-app.herokuapp.com/)!
+
