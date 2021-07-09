@@ -2,16 +2,16 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const hbs = require('hbs');
-const geocode = require('./utils/geocode'); 
-const forecast = require('./utils/forecast'); 
+const geocode = require('./utils/geocode');
+const forecast = require('./utils/forecast');
 console.log(__dirname);
 
 /*
-Heroku provides the port number at process.env.PORT. (process.env is an environment variable). Locally this is not available and we provide a fallback value of 3000. 
+Heroku provides the port number at process.env.PORT. (process.env is an environment variable). Locally this is not available and we provide a fallback value of 3000.
 */
-const port = process.env.PORT || 3000; 
+const port = process.env.PORT || 3000;
 
-//Define paths for Express config 
+//Define paths for Express config
 const publicDirPath = path.join(__dirname, '../public');
 
 /* express expects all files in the 'views' folder of the root directory. For custom folder names, add the path as below. Not needed if using 'views' */
@@ -21,7 +21,7 @@ const partialsPath = path.join(__dirname, '../templates/partials');
 //setup handlebars engine and views location
 app.set('views', viewsPath);
 app.set('view engine', 'hbs');
-/*'set' allows you to set an express value. We have a key and a value. Using this (handlebars) we can use it to produce dynamic content. 
+/*'set' allows you to set an express value. We have a key and a value. Using this (handlebars) we can use it to produce dynamic content.
 express expects all of its views (in this case hbs) to live in a specific folder views in the root of the project */
 hbs.registerPartials(partialsPath);
 
@@ -47,7 +47,7 @@ app.get('', (request, response) => {
 })
 
 app.get('/weather', (request, response) => {
-    //query string starts with ?, separatede by & 
+    //query string starts with ?, separatede by &
     if (!request.query.address) {
         //you can have only 1 response.send. hence the next one produces an error. so we need to return this one
         return response.send({
@@ -57,17 +57,17 @@ app.get('/weather', (request, response) => {
 
     geocode.geocode(request.query.address, (error, { latitude, longitude, location} = {}) =>{
         if(error) {
-            return response.send({error}); 
+            return response.send({error});
         }
 
         forecast.forecast(latitude, longitude, (error, forecastData) => {
             if(error) {
-                return response.send( { error}); 
+                return response.send( { error});
             }
 
             response.send({
-                forecast : forecastData, 
-                location, 
+                forecast : forecastData,
+                location,
                 address : request.query.address
             })
         })
@@ -76,7 +76,7 @@ app.get('/weather', (request, response) => {
 
 app.get('/about', (request, response) => {
     response.render('about', {
-        title: 'About Me',
+        title: 'About',
         name: 'Sayantan Mukherjee'
     })
 })
@@ -113,7 +113,7 @@ app.get('*', (request, response) => {
 /*
 common development port is 3000
 common http port is 80
-callback function is fired when the port is up and running 
+callback function is fired when the port is up and running
 starting a server is an asynchronous process
 */
 app.listen(port, () => {
